@@ -1,18 +1,71 @@
-<mvc:View id="App" 
-	xmlns="sap.m" 
-	xmlns:u="sap.ui.unified" 
-	xmlns:mvc="sap.ui.core.mvc" 
-	controllerName="storm.controller.App"
+<mvc:View id="App" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:l="sap.ui.layout" xmlns="sap.m" xmlns:f="sap.ui.layout.form" xmlns:u="sap.ui.unified" controllerName="storm.controller.App"
 	displayBlock="true" height="100%">
-	
-	<Button
-		text="Say Hello"
-		press="onShowHello"/>
-		
-	<Input
-		value="{/recipient/name}"
-		description="Hello {/recipient/name}"
-		valueLiveUpdate="true"
-		width="60%"/>	
-		
+	<SplitContainer>
+		<detailPages>
+			<Page responsive="true" id="detail" class="sapUiResponsiveContentPadding" enableScrolling="true" floatingFooter="true" showHeader="false">
+				<content>
+					<Toolbar id="FilterBar">
+						<ToolbarSpacer/>
+						<SearchField search="handleSearch" width="35%"/>
+					</Toolbar>
+					<Table id="timeTable" selectionChange="selectionChange" updateFinished="updateFinished">
+						<columns>
+							<Column visible="false">
+								<Text text="TaskGuid"/>
+							</Column>
+							<Column visible="false">
+								<Text text="StatusCode"/>
+							</Column>
+							<Column minScreenWidth="Phone" demandPopin="true" hAlign="Left">
+								<Text text="Aufgabe"/>
+							</Column>
+							<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Left">
+								<Text text="Projekt"/>
+							</Column>
+							<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Left">
+								<Text text="Rolle"/>
+							</Column>
+							<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Left">
+								<Text text="Plandatum"/>
+							</Column>
+							<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Left">
+								<Text text="Erfasste Zeit"/>
+							</Column>
+							<Column minScreenWidth="Phone" demandPopin="true" hAlign="Left">
+								<Text text="Status"/>
+							</Column>
+							<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Left">
+								<Text text="Notizen"/>
+							</Column>
+							<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Left">
+								<Text text="Erfassungsdatum"/>
+							</Column>
+						</columns>
+					</Table>
+				</content>
+				<footer>
+					<Bar id="footer" class="sapUiResponsiveMargin" translucent="true" design="Footer">
+						<contentLeft>
+							<Button id="Message" icon="sap-icon://message-popup" type="Emphasized" press="handleMessage" visible="false"/>
+						</contentLeft>
+						<contentRight>
+							<Button id="saveAll" press="onSaveAll" iconDensityAware="false" text="" type="Accept" icon="sap-icon://save" iconFirst="true" width="auto"/>
+							<Button id="release" press="onRelease" iconDensityAware="false" text="Release" type="Emphasized" iconFirst="true" width="auto"/>
+							<Button id="releaseall" press="onReleaseAll" iconDensityAware="false" text="Release All" type="Emphasized" iconFirst="true" width="auto"/>
+						</contentRight>
+					</Bar>
+				</footer>
+			</Page>
+		</detailPages>
+		<masterPages>
+			<Page id="master" icon="sap-icon://action" class="sapUiResponsiveMargin" showHeader="false" floatingFooter="true">
+				<content>
+					<u:Calendar id="calendar" select="handleCalendarSelect" width="100%"/>
+					<u:CalendarLegend id="legend"/>
+					<Button class="sapUiSmallMargin" press="handleSelectToday" text="Heute" width="90%"/>
+				</content>
+			</Page>
+		</masterPages>
+	</SplitContainer>
 </mvc:View>
