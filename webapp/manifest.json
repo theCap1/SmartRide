@@ -8,22 +8,7 @@
 		"description": "{{appDescription}}",
 		"applicationVersion": {
 			"version": "1.0.0"
-		},
-		"dataSources": {
-			"PPD": {
-				"uri": "/sap/opu/odata/sap/ZPPDC_TIME_REC_SRV/",
-				"type": "OData",
-				"settings": {
-					"odataVersion": "2.0",
-					"localUri": "localService/metadata.xml"
-				}
-			}
-		},
-		"sourceTemplate": {
-			"id": "sap.ui.ui5-template-plugin.1worklist",
-			"version": "1.36.2"
-		},
-		"i18n": ""
+		}
 	},
 	"sap.ui": {
 		"_version": "1.3.0",
@@ -59,14 +44,6 @@
 				},
 				"sap.m": {
 					"minVersion": "1.36.0"
-				}
-			}
-		},
-		"models": {
-			"": {
-				"dataSource": "PPD",
-				"settings": {
-					"defaultBindingMode": "TwoWay"
 				}
 			}
 		},
