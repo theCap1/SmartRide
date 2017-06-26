@@ -1,0 +1,18 @@
+<mvc:View id="App" 
+	xmlns="sap.m" 
+	xmlns:u="sap.ui.unified" 
+	xmlns:mvc="sap.ui.core.mvc" 
+	controllerName="storm.controller.App"
+	displayBlock="true" height="100%">
+	
+	<Button
+		text="Say Hello"
+		press="onShowHello"/>
+		
+	<Input
+		value="{/recipient/name}"
+		description="Hello {/recipient/name}"
+		valueLiveUpdate="true"
+		width="60%"/>	
+		
+</mvc:View>
