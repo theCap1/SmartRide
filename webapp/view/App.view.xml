@@ -1,10 +1,18 @@
-<mvc:View id="App" xmlns:mvc="sap.ui.core.mvc"
-	xmlns:l="sap.ui.layout" xmlns="sap.m" xmlns:f="sap.ui.layout.form" xmlns:u="sap.ui.unified" controllerName="storm.controller.App"
+<mvc:View 
+	id="App" 
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:l="sap.ui.layout" 
+	xmlns="sap.m" 
+	xmlns:f="sap.ui.layout.form" 
+	xmlns:u="sap.ui.unified" 
+	controllerName="storm.controller.App"
 	displayBlock="true" height="100%">
+	<mvc:XMLView viewName="storm.view.Carousel"/>
 	<SplitContainer>
 		<detailPages>
 			<Page responsive="true" id="detail" class="sapUiResponsiveContentPadding" enableScrolling="true" floatingFooter="true" showHeader="false">
 				<content>
+					<Text text="blabla"/>
 					<Toolbar id="FilterBar">
 						<ToolbarSpacer/>
 						<SearchField search="handleSearch" width="35%"/>

@@ -1,7 +1,7 @@
 sap.ui.define([
-		"sap/ui/core/mvc/Controller",
-		"sap/ui/model/json/JSONModel",
-		"sap/m/MessageToast"
+	"sap/ui/core/mvc/Controller",
+	"sap/ui/model/json/JSONModel",
+	"sap/m/MessageToast"
 	],
 
 	function(Controller, JSONModel, Toast) {
