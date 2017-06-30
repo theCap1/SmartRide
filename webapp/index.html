@@ -15,16 +15,21 @@
 		</script>
 		<script>
 			sap.ui.getCore().attachInit(function() {
-				new sap.m.App ({
-					pages: [
-						new sap.m.Page({
-							title: "S.T.O.R.M", 
-							enableScrolling : false,
-							content: [ new sap.ui.core.ComponentContainer({
-								height: "100%", name : "storm"
-							})]
-						})
-					]
+				new sap.m.Shell({
+					title: "Blabla",
+					app: [
+						new sap.m.App ({
+						pages: [
+							new sap.m.Page({
+								title: "S.T.O.R.M", 
+								enableScrolling : false,
+								content: [ new sap.ui.core.ComponentContainer({
+									height: "100%",
+									name : "storm"
+								})]
+							})
+						]
+					})]
 				}).placeAt("content");
 			});
 		</script>
