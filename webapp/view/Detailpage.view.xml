@@ -2,30 +2,27 @@
         xmlns:mvc="sap.ui.core.mvc"
         xmlns="sap.tnt"
         height="100%">
-    <NavigationList id="navigationList" width="320px">
+	<NavigationList>
         <NavigationListItem
-                text="Item 1"
-                icon="sap-icon://employee">
-            <NavigationListItem text="Sub Item 1">
-            </NavigationListItem>
-            <NavigationListItem text="Sub Item 2">
-            </NavigationListItem>
-            <NavigationListItem text="Sub Item 3">
-            </NavigationListItem>
-            <NavigationListItem text="Sub Item 4">
-            </NavigationListItem>
+                text="Home"
+                icon="sap-icon://building"/>
+        <NavigationListItem
+                text="Rewards"
+                icon="sap-icon://retail-store-manager">
+        	<NavigationListItem 
+        		text="My Vouchers"/>
         </NavigationListItem>
         <NavigationListItem
-                text="Item 2"
-                icon="sap-icon://building">
-            <NavigationListItem text="Sub Item 1">
-            </NavigationListItem>
-            <NavigationListItem text="Sub Item 2">
-            </NavigationListItem>
-            <NavigationListItem text="Sub Item 3">
-            </NavigationListItem>
-            <NavigationListItem text="Sub Item 4">
-            </NavigationListItem>
-        </NavigationListItem>
+                text="Account"
+                icon="sap-icon://retail-store-manager"/>
+        <NavigationListItem
+                text="Settings"
+                icon="sap-icon://retail-store-manager"/>
+        <NavigationListItem
+                text="Contact us"
+                icon="sap-icon://retail-store-manager"/>
+        <NavigationListItem
+                text="Help"
+                icon="sap-icon://retail-store-manager"/>
     </NavigationList>
 </mvc:View>

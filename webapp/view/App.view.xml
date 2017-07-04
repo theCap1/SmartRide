@@ -13,44 +13,7 @@
 		<detailPages>
 			<Page responsive="true" id="detail" class="sapUiResponsiveContentPadding" enableScrolling="true" floatingFooter="true" showHeader="false">
 				<content>
-					<Toolbar id="FilterBar">
-						<ToolbarSpacer/>
-						<SearchField search="handleSearch" width="35%"/>
-					</Toolbar>
-					<Table id="timeTable" selectionChange="selectionChange" updateFinished="updateFinished">
-						<columns>
-							<Column visible="false">
-								<Text text="TaskGuid"/>
-							</Column>
-							<Column visible="false">
-								<Text text="StatusCode"/>
-							</Column>
-							<Column minScreenWidth="Phone" demandPopin="true" hAlign="Left">
-								<Text text="Aufgabe"/>
-							</Column>
-							<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Left">
-								<Text text="Projekt"/>
-							</Column>
-							<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Left">
-								<Text text="Rolle"/>
-							</Column>
-							<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Left">
-								<Text text="Plandatum"/>
-							</Column>
-							<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Left">
-								<Text text="Erfasste Zeit"/>
-							</Column>
-							<Column minScreenWidth="Phone" demandPopin="true" hAlign="Left">
-								<Text text="Status"/>
-							</Column>
-							<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Left">
-								<Text text="Notizen"/>
-							</Column>
-							<Column minScreenWidth="Tablet" demandPopin="true" hAlign="Left">
-								<Text text="Erfassungsdatum"/>
-							</Column>
-						</columns>
-					</Table>
+					
 				</content>
 				<footer>
 					<Bar id="footer" class="sapUiResponsiveMargin" translucent="true" design="Footer">
