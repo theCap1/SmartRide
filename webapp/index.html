@@ -16,6 +16,11 @@
 		<script>
 			sap.ui.getCore().attachInit(function() {
 				new sap.ui.unified.Shell({
+					headItems : [
+							new sap.ui.unified.ShellHeadItem({
+							icon : "sap-icon://menu2"
+							})
+						],
 					content: [
 						new sap.m.Shell({
 							app: new sap.m.App ({
