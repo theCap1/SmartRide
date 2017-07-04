@@ -15,36 +15,47 @@
 		</script>
 		<script>
 			sap.ui.getCore().attachInit(function() {
-				new sap.ui.unified.Shell({
-					headItems : [
-							new sap.ui.unified.ShellHeadItem({
-							icon : "sap-icon://menu2"
-						})
-						],
-					headEndItems : [
-						new sap.ui.unified.ShellHeadItem({
-							icon:"sap-icon://log",
-							tooltip:"Logoff"
-						})
-						],
-					content: [
-						new sap.m.Shell({
-							app: new sap.m.App ({
-								pages: [
-									new sap.m.Page({
-										title: "S.T.O.R.M", 
-										enableScrolling : true,
-										showHeader: false,
-										width: "75%", 
-										content: [ new sap.ui.core.ComponentContainer({
-											height: "70%",
-											name : "storm" 
-										})]
+				new sap.m.Shell({
+					app: new sap.m.App ({
+						pages: [
+							new sap.m.Page({
+								title: "S.T.O.R.M", 
+								enableScrolling : false,
+								showHeader: false,
+								width: "75%", 
+								content: [ 
+									new sap.ui.unified.Shell({
+										headItems : [
+											new sap.ui.unified.ShellHeadItem({
+												icon : "sap-icon://menu"
+											}),
+											new sap.ui.unified.ShellHeadItem({
+												icon : "sap-icon://menu2"
+											})
+										],
+										headEndItems : [
+											new sap.ui.unified.ShellHeadItem({
+												icon:"sap-icon://log",
+												tooltip:"Logoff"
+											})
+										],
+										user : [
+											new sap.ui.unified.ShellHeadUserItem({
+												image:"sap-icon://person-placeholder",
+												username:"Max Mustermann"
+											})
+										],
+										content: [
+											new sap.ui.core.ComponentContainer({
+												height: "70%",
+												name : "storm" 
+											})
+										]
 									})
 								]
 							})
-						})
-					]
+						]
+					})
 				}).placeAt("content");
 			});
 		</script>

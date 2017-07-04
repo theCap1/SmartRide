@@ -13,17 +13,13 @@
 		<detailPages>
 			<Page responsive="true" id="detail" class="sapUiResponsiveContentPadding" enableScrolling="true" floatingFooter="true" showHeader="false">
 				<content>
-					
+					<mvc:XMLView viewName="storm.view.PersonalInfo"/>
 				</content>
-				<footer>
-					<Bar>
-					</Bar>
-				</footer>
 			</Page>
 		</detailPages>
 		<masterPages>
 			<Page id="master" icon="sap-icon://action" class="sapUiResponsiveMargin" showHeader="false" floatingFooter="true">
-				<mvc:XMLView viewName="storm.view.Detailpage"/>
+				<mvc:XMLView viewName="storm.view.Masterpage"/>
 			</Page>
 		</masterPages>
 	</SplitContainer>
