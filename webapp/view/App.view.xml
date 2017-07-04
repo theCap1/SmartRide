@@ -16,15 +16,7 @@
 					
 				</content>
 				<footer>
-					<Bar id="footer" class="sapUiResponsiveMargin" translucent="true" design="Footer">
-						<contentLeft>
-							<Button id="Message" icon="sap-icon://message-popup" type="Emphasized" press="handleMessage" visible="false"/>
-						</contentLeft>
-						<contentRight>
-							<Button id="saveAll" press="onSaveAll" iconDensityAware="false" text="" type="Accept" icon="sap-icon://save" iconFirst="true" width="auto"/>
-							<Button id="release" press="onRelease" iconDensityAware="false" text="Release" type="Emphasized" iconFirst="true" width="auto"/>
-							<Button id="releaseall" press="onReleaseAll" iconDensityAware="false" text="Release All" type="Emphasized" iconFirst="true" width="auto"/>
-						</contentRight>
+					<Bar>
 					</Bar>
 				</footer>
 			</Page>
