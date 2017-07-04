@@ -7,7 +7,7 @@
 	xmlns:u="sap.ui.unified" 
 	controllerName="storm.controller.App"
 	displayBlock="true" 
-	height="100%">
+	height="101%">
 	<mvc:XMLView viewName="storm.view.Carousel"/>
 	<SplitContainer>
 		<detailPages>

@@ -1,5 +1,5 @@
 <mvc:View 
-	height="20%" 
+	height="40%" 
 	xmlns:l="sap.ui.layout" 
 	xmlns:mvc="sap.ui.core.mvc" 
 	xmlns="sap.m">
