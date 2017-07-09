@@ -1,5 +1,4 @@
 <mvc:View
-<<<<<<< HEAD
         xmlns:mvc="sap.ui.core.mvc"	
         xmlns="sap.tnt"
         xmlns:m="sap.m"
@@ -38,32 +37,4 @@
 	                icon="sap-icon://retail-store-manager"/>
 	    </NavigationList>
     </m:Page>
-=======
-        xmlns:mvc="sap.ui.core.mvc"
-        xmlns="sap.tnt"
-        height="100%">
-	<NavigationList>
-        <NavigationListItem
-                text="Home"
-                icon="sap-icon://building"/>
-        <NavigationListItem
-                text="Rewards"
-                icon="sap-icon://retail-store-manager">
-        	<NavigationListItem 
-        		text="My Vouchers"/>
-        </NavigationListItem>
-        <NavigationListItem
-                text="Account"
-                icon="sap-icon://retail-store-manager"/>
-        <NavigationListItem
-                text="Settings"
-                icon="sap-icon://retail-store-manager"/>
-        <NavigationListItem
-                text="Contact us"
-                icon="sap-icon://retail-store-manager"/>
-        <NavigationListItem
-                text="Help"
-                icon="sap-icon://retail-store-manager"/>
-    </NavigationList>
->>>>>>> 36f42da6ffcb377be73e1cff2606ff3b98b41451
 </mvc:View>

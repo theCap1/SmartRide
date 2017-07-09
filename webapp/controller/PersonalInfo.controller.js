@@ -10,7 +10,6 @@ sap.ui.define([
  
 		onInit: function (oEvent) {
  
-<<<<<<< HEAD
 			// set explored app's demo model on this sample - Comment
 			//var oModel = new JSONModel(jQuery.sap.getModulePath("storm", "/supplier.json"));
 			//this.getView().setModel(oModel);
@@ -49,48 +48,14 @@ sap.ui.define([
 			////oData.SupplierCollection[0] = this._oSupplier;
  
 			//oModel.setData(oData);
-=======
 			// set explored app's demo model on this sample
-			var oModel = new JSONModel(jQuery.sap.getModulePath("sap.ui.demo.mock", "/supplier.json"));
-			this.getView().setModel(oModel);
+			//var oModel = new JSONModel(jQuery.sap.getModulePath("sap.ui.demo.mock", "/supplier.json"));
+			//this.getView().setModel(oModel);
  
-			this.getView().bindElement("/SupplierCollection/0");
+			//this.getView().bindElement("/SupplierCollection/0");
  
 			// Set the initial form to be the display one
 			this._showFormFragment("DisplayPersonalInfo");
-		},
- 
-		onExit : function () {
-			for(var sPropertyName in this._formFragments) {
-				if(!this._formFragments.hasOwnProperty(sPropertyName)) {
-					return;
-				}
- 
-				this._formFragments[sPropertyName].destroy();
-				this._formFragments[sPropertyName] = null;
-			}
-		},
- 
-		handleEditPress : function () {
- 
-			//Clone the data
-			this._oSupplier = jQuery.extend({}, this.getView().getModel().getData().SupplierCollection[0]);
-			this._toggleButtonsAndView(true);
- 
-		},
- 
-		handleCancelPress : function () {
- 
-			//Restore the data
-			var oModel = this.getView().getModel();
-			var oData = oModel.getData();
- 
-			oData.SupplierCollection[0] = this._oSupplier;
- 
-			oModel.setData(oData);
->>>>>>> 36f42da6ffcb377be73e1cff2606ff3b98b41451
-			this._toggleButtonsAndView(false);
- 
 		},
  
 		handleSavePress : function () {
