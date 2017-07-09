@@ -1,4 +1,44 @@
 <mvc:View
+<<<<<<< HEAD
+        xmlns:mvc="sap.ui.core.mvc"	
+        xmlns="sap.tnt"
+        xmlns:m="sap.m"
+        controllerName="storm.controller.Masterpage"
+        height="100%">
+	<m:Page
+		id="page"
+		showHeader="false" >
+		<NavigationList>
+	        <NavigationListItem
+	                text="Home"
+	                icon="sap-icon://building"/>
+	        <NavigationListItem
+	                text="Rewards"
+	                icon="sap-icon://retail-store-manager">
+	        	<NavigationListItem
+	        		text="Redeem"
+	        		id="redeem"
+	        		select="handleRedeemPress"/>
+	        	<NavigationListItem 
+	        		text="My Vouchers"
+	        		id="vouchers"/>
+	        </NavigationListItem>
+	        <NavigationListItem
+	                text="Account"
+	                icon="sap-icon://retail-store-manager"
+	                press=""/>
+	        <NavigationListItem
+	                text="Settings"
+	                icon="sap-icon://retail-store-manager"/>
+	        <NavigationListItem
+	                text="Contact us"
+	                icon="sap-icon://retail-store-manager"/>
+	        <NavigationListItem
+	                text="Help"
+	                icon="sap-icon://retail-store-manager"/>
+	    </NavigationList>
+    </m:Page>
+=======
         xmlns:mvc="sap.ui.core.mvc"
         xmlns="sap.tnt"
         height="100%">
@@ -25,4 +65,5 @@
                 text="Help"
                 icon="sap-icon://retail-store-manager"/>
     </NavigationList>
+>>>>>>> 36f42da6ffcb377be73e1cff2606ff3b98b41451
 </mvc:View>
