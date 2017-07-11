@@ -2,6 +2,7 @@ sap.ui.define([
 		'jquery.sap.global',
 		'sap/ui/core/Fragment',
 		'sap/ui/core/mvc/Controller',
+		"sap/ui/core/mvc/View",
 		'sap/ui/model/json/JSONModel'
 	], function(jQuery, Fragment, Controller, JSONModel) {
 	"use strict";
@@ -9,85 +10,28 @@ sap.ui.define([
 	return Controller.extend("storm.controller.Masterpage", {
  
 		onInit: function (oEvent) {
- 
-			// set explored app's demo model on this sample - Comment
-			//var oModel = new JSONModel(jQuery.sap.getModulePath("storm", "/supplier.json"));
-			//this.getView().setModel(oModel);
- 
-			//this.getView().bindElement("/SupplierCollection/0");
- 
-			// Set the initial form to be the display one
-			//this._showFormFragment("DisplayPersonalInfo");
 		},
- 
-		/*onExit : function () {
-			for(var sPropertyName in this._formFragments) {
-				if(!this._formFragments.hasOwnProperty(sPropertyName)) {
-					return;
-				}
- 
-				this._formFragments[sPropertyName].destroy();
-				this._formFragments[sPropertyName] = null;
-			}
-		},*/
+		
+		handleHomePress: function () {
+			this._changeView("Home");
+		},
  
 		handleRedeemPress : function () {
- 
-			//Clone the data - Comment
-			//this._oSupplier = jQuery.extend({}, this.getView().getModel().getData().SupplierCollection[0]);
-			this._showFormFragment("RedeemCurrency"); 
+			this._changeView("RedeemCurrency"); 
 		},
  
-		handleCancelPress : function () {
- 
-			//Restore the data
-			//var oModel = this.getView().getModel();
-			//var oData = oModel.getData();
- 
-			////oData.SupplierCollection[0] = this._oSupplier;
- 
-			//oModel.setData(oData);
- 
+		handleAccountPress : function () {
+			this._changeView("PersonalInfo"); 
 		},
- 
-		handleSavePress : function () {
- 
-			this._toggleButtonsAndView(false);
- 
-		},
- 
-		_formFragments: {},
- 
-		_toggleButtonsAndView : function (bEdit) {
-			var oView = this.getView();
- 
-			// Show the appropriate action buttons
-			oView.byId("edit").setVisible(!bEdit);
-			oView.byId("save").setVisible(bEdit);
-			oView.byId("cancel").setVisible(bEdit);
- 
-			// Set the right form type
-			this._showFormFragment(bEdit ? "ChangePersonalInfo" : "DisplayPersonalInfo");
-		},
- 
-		_getFormFragment: function (sFragmentName) {
-			var oFormFragment = this._formFragments[sFragmentName];
- 
-			if (oFormFragment) {
-				return oFormFragment;
-			}
- 
-			oFormFragment = sap.ui.xmlfragment(this.getView().getId(), "storm.fragments." + sFragmentName);
- 
-			return this._formFragments[sFragmentName] = oFormFragment;
-		},
- 
-		_showFormFragment : function (sFragmentName) {
-			var oPage = this.oView.getParent().getParent().getParent()._aDetailPages[0].mAggregations.content[0];
- 
-			oPage.removeAllContent();
-			oPage.insertContent(this._getFormFragment(sFragmentName));
+		
+		_changeView: function (sViewName){
+			var oDetailPage = this.getView().getParent().getParent().getParent().getCurrentDetailPage();
+			
+			oDetailPage.removeAllContent();
+			
+			var oView = sap.ui.view({/*id:sViewName, */viewName:"storm.view." + sViewName, type:sap.ui.core.mvc.ViewType.XML});
+			
+			oDetailPage.insertContent(oView);
 		}
- 
 	});
 });

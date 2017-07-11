@@ -16,7 +16,7 @@
 	                icon="sap-icon://retail-store-manager">
 	        	<NavigationListItem
 	        		text="Redeem"
-	        		id="redeem"
+	        		id="RedeemCurrency"
 	        		select="handleRedeemPress"/>
 	        	<NavigationListItem 
 	        		text="My Vouchers"
@@ -25,7 +25,7 @@
 	        <NavigationListItem
 	                text="Account"
 	                icon="sap-icon://retail-store-manager"
-	                press=""/>
+	                select="handleAccountPress"/>
 	        <NavigationListItem
 	                text="Settings"
 	                icon="sap-icon://retail-store-manager"/>

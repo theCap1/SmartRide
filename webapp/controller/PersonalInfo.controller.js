@@ -55,7 +55,7 @@ sap.ui.define([
 			//this.getView().bindElement("/SupplierCollection/0");
  
 			// Set the initial form to be the display one
-			this._showFormFragment("DisplayPersonalInfo");
+			this._toggleButtonsAndView(false);
 		},
  
 		handleSavePress : function () {

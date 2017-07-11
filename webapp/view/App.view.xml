@@ -9,7 +9,7 @@
 	displayBlock="true" 
 	height="101%">
 	<mvc:XMLView viewName="storm.view.Carousel"/>
-	<SplitContainer>
+	<SplitContainer id="splitContainer">
 		<detailPages>
 			<Page responsive="true" id="detail" class="sapUiResponsiveContentPadding" enableScrolling="true" floatingFooter="true" showHeader="false">
 				<content>

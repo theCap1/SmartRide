@@ -7,7 +7,7 @@
 		<f:Form id="FormDisplay354wideDual"
 			editable="false">
 			<f:title>
-				<core:Title text="Address" />
+				<core:Title text="Your Data" />
 			</f:title>
 			<f:layout>
 				<f:ResponsiveGridLayout
@@ -26,25 +26,6 @@
 					singleContainerFullSize="false" />
 			</f:layout>
 			<f:formContainers>
-				<f:FormContainer title="Account">
-					<f:formElements>
-						<f:FormElement label="Current Password">
-							<f:fields>
-								<Text text="" id="passwordText"  />
-							</f:fields>
-						</f:FormElement>
-						<f:FormElement label="Password">
-							<f:fields>
-								<Text text="" />
-							</f:fields>
-						</f:FormElement>
-						<f:FormElement label="Repeat Password">
-							<f:fields>
-								<Text text="" />
-							</f:fields>
-						</f:FormElement>
-					</f:formElements>
-				</f:FormContainer>
 				<f:FormContainer title="Personal Information">
 					<f:formElements>
 						<f:FormElement label="Gender">
