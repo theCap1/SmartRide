@@ -10,7 +10,8 @@
 		<NavigationList>
 	        <NavigationListItem
 	                text="Home"
-	                icon="sap-icon://building"/>
+	                icon="sap-icon://building"
+	        		select="handleHomePress"/>
 	        <NavigationListItem
 	                text="Rewards"
 	                icon="sap-icon://retail-store-manager">

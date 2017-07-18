@@ -9,6 +9,7 @@ sap.ui.define([
 
 			metadata: {
 				manifest: "json",
+				includes: [ "css/style.css" ],
 				config: {
 					sample: {
 						stretch: true,
