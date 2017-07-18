@@ -1,0 +1,39 @@
+<mvc:View
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:core="sap.ui.core"
+	xmlns:l="sap.ui.layout"
+	xmlns="sap.m">
+	<l:VerticalLayout
+		class="sapUiContentPadding"
+		width="100%">
+		<l:HorizontalLayout>
+			<Panel class="sapUiResponsiveMargin" width="auto" height="33%" accessibleRole="Region" backgroundDesign="Solid">
+				<headerToolbar>
+					<Toolbar class="whitePanelHeader" height="3rem">
+						<Title text="Wilkommen + Name"/>
+					</Toolbar>
+				</headerToolbar>
+				<content>
+					<Text text="Here you can manage your account and get your rewards!"/>
+				</content>
+				<layoutData>
+					<l:GridData span="L6 M12 S12" />
+				</layoutData>
+			</Panel>
+			<FlexBox justifyContent="Center" alignItems="Center" fitContainer="true">
+				<Image src="http://cdn2.hubspot.net/hubfs/402541/rfid_icon.png" width="40%"/>
+			</FlexBox>
+		</l:HorizontalLayout>
+	</l:VerticalLayout>
+	<ObjectListItem id="productitem-large-1"
+		title="{Name}"
+		intro="{Category}"
+		icon="{
+			path: 'Category',
+			formatter: 'sap.ui.layout.sample.GridTiles.Formatter.categoryIcon'
+		}" >
+		<layoutData>
+			<l:GridData span="L6 M12 S12" />
+		</layoutData>
+	</ObjectListItem>
+</mvc:View>
