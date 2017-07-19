@@ -4,12 +4,12 @@ sap.ui.define([
 		'sap/ui/core/mvc/Controller',
 		"sap/ui/core/mvc/View",
 		'sap/ui/model/json/JSONModel'
-	], function(jQuery, Fragment, Controller, JSONModel) {
+	], function(jQuery, Fragment, Controller) {
 	"use strict";
  
 	return Controller.extend("storm.controller.Masterpage", {
  
-		onInit: function (oEvent) {
+		onInit: function () {
 		},
 		
 		handleHomePress: function () {

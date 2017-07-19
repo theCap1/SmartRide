@@ -1,13 +1,13 @@
 <mvc:View
+	controllerName="storm.controller.Home"
 	xmlns:mvc="sap.ui.core.mvc"
 	xmlns:core="sap.ui.core"
 	xmlns:l="sap.ui.layout"
-	xmlns="sap.m">
-	<l:VerticalLayout
-		class="sapUiContentPadding"
-		width="100%">
-		<l:HorizontalLayout>
-			<Panel class="sapUiResponsiveMargin" width="auto" height="33%" accessibleRole="Region" backgroundDesign="Solid">
+	xmlns="sap.m"
+	xmlns:xlink="http://www.w3.org/1999/xlink">
+	<l:Grid defaultSpan="L4 M6 S6" class="sapUiSmallMarginTop">
+		<l:content>
+			<Panel class="sapUiResponsiveMargin" width="auto" height="11rem" accessibleRole="Region" backgroundDesign="Solid">
 				<headerToolbar>
 					<Toolbar class="whitePanelHeader" height="3rem">
 						<Title text="Wilkommen + Name"/>
@@ -20,11 +20,61 @@
 					<l:GridData span="L6 M12 S12" />
 				</layoutData>
 			</Panel>
-			<FlexBox justifyContent="Center" alignItems="Center" fitContainer="true">
-				<Image src="http://cdn2.hubspot.net/hubfs/402541/rfid_icon.png" width="40%"/>
-			</FlexBox>
-		</l:HorizontalLayout>
-	</l:VerticalLayout>
+			<Panel class="sapUiResponsiveMargin" width="auto" height="11rem" accessibleRole="Region">
+				<content>
+					<Image src="http://www.clearspider.com/wp-content/uploads/2015/12/RFID-and-the-Supply-Chain_cover-19-1.png" press="rfidPress" width="80%" height="97%"/>
+				</content>
+				<layoutData>
+					<l:GridData span="L6 M12 S12" />
+				</layoutData>
+			</Panel>
+			<Panel class="sapUiResponsiveMargin" width="auto" height="11rem" accessibleRole="Region" backgroundDesign="Solid">
+				<headerToolbar>
+					<Toolbar class="whitePanelHeader" height="3rem">
+						<Title text="Account Balance"/>
+					</Toolbar>
+				</headerToolbar>
+				<content>
+					<core:Icon
+					src="sap-icon://loan"
+					size="3rem"
+					color="#031E48"/>
+					<Text class="subHeader" text=" Credit Count"/>
+				</content>
+				<layoutData>
+					<l:GridData span="L6 M12 S12" />
+				</layoutData>
+			</Panel>
+			<Panel class="sapUiResponsiveMargin" width="auto" height="11rem" accessibleRole="Region" backgroundDesign="Solid" enableScrolling="false">
+				<headerToolbar>
+					<Toolbar class="whitePanelHeader" height="3rem">
+						<Title text="Always Informed"/>
+					</Toolbar>
+				</headerToolbar>
+				<content>
+					<l:VerticalLayout
+						class="sapUiContentPadding"
+						width="100%">
+						<Link
+						text="How to collect Credits"
+						target="_blank"
+						href="http://www.sap.com"/>
+						<Link
+						text="How to redeem Credits"
+						target="_blank"
+						href="http://www.sap.com"/>
+						<Link
+						text="How to manage your Account"
+						target="_blank"
+						href="http://www.sap.com"/>
+					</l:VerticalLayout>
+				</content>
+				<layoutData>
+					<l:GridData span="L6 M12 S12" />
+				</layoutData>
+			</Panel>
+		</l:content>
+	</l:Grid>
 	<ObjectListItem id="productitem-large-1"
 		title="{Name}"
 		intro="{Category}"
