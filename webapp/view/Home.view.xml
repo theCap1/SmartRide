@@ -1,8 +1,10 @@
 <mvc:View
+	controllerName="storm.controller.Home"
 	xmlns:mvc="sap.ui.core.mvc"
 	xmlns:core="sap.ui.core"
 	xmlns:l="sap.ui.layout"
-	xmlns="sap.m">
+	xmlns="sap.m"
+	xmlns:xlink="http://www.w3.org/1999/xlink">
 	<l:VerticalLayout
 		class="sapUiContentPadding"
 		width="100%">
@@ -20,9 +22,35 @@
 					<l:GridData span="L6 M12 S12" />
 				</layoutData>
 			</Panel>
-			<FlexBox justifyContent="Center" alignItems="Center" fitContainer="true">
-				<Image src="http://cdn2.hubspot.net/hubfs/402541/rfid_icon.png" width="40%"/>
-			</FlexBox>
+				<Image src="http://www.clearspider.com/wp-content/uploads/2015/12/RFID-and-the-Supply-Chain_cover-19-1.png" press="rfidPress" width="40%"/>
+		</l:HorizontalLayout>
+		<l:HorizontalLayout>
+			<Panel class="sapUiResponsiveMargin" width="auto" height="33%" accessibleRole="Region" backgroundDesign="Solid">
+				<headerToolbar>
+					<Toolbar class="whitePanelHeader" height="3rem">
+						<Title text="Wilkommen + Name"/>
+					</Toolbar>
+				</headerToolbar>
+				<content>
+					<Text text="Here you can manage your account and get your rewards!"/>
+				</content>
+				<layoutData>
+					<l:GridData span="L6 M12 S12" />
+				</layoutData>
+			</Panel>
+			<Panel class="sapUiResponsiveMargin" width="auto" height="33%" accessibleRole="Region" backgroundDesign="Solid">
+				<headerToolbar>
+					<Toolbar class="whitePanelHeader" height="3rem">
+						<Title text="Wilkommen + Name"/>
+					</Toolbar>
+				</headerToolbar>
+				<content>
+					<Text text="Here you can manage your account and get your rewards!"/>
+				</content>
+				<layoutData>
+					<l:GridData span="L6 M12 S12" />
+				</layoutData>
+			</Panel>
 		</l:HorizontalLayout>
 	</l:VerticalLayout>
 	<ObjectListItem id="productitem-large-1"
