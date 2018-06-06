@@ -9,25 +9,28 @@ import java.util.Random;
 
 public class Bahn {
 
+    public String Linie;
     public String Ziel;
-    public Date Abfahrt;
+    public String Abfahrt;
     public int Auslastung;
     public float[] Statistik;
 
-    public Bahn(String ZielValue, Date AbfahrtValue){
+    public Bahn(String LinieValue, String ZielValue, String AbfahrtValue){
+        Linie = LinieValue;
         Ziel = ZielValue;
         Abfahrt = AbfahrtValue;
         Auslastung = new Random().nextInt(3 - 0);
         Statistik = getAuslastung();
     }
 
+    //TODO: implementation
     public float[] getAuslastung(){
         float[] stats = {};
         return stats;
     }
 
     public String toString(){
-        return Ziel + " " + Abfahrt + " Auslastung: " + Auslastung;
+        return Linie + " " + Ziel + " " + Abfahrt + " Auslastung: " + Auslastung;
     }
 
 }
