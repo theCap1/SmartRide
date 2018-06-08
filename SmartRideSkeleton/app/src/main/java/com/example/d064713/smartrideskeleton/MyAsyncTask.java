@@ -15,6 +15,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * Created by D064713 on 08.01.2018.
@@ -46,8 +47,16 @@ public class MyAsyncTask extends AsyncTask<String, Integer, String> {
             for(int i = 0; i < listOfDepartures.length(); i++){
                 String Linie = String.valueOf(listOfDepartures.getJSONObject(i).get("lineLabel"));
                 String Ziel = String.valueOf(listOfDepartures.getJSONObject(i).get("direction"));
-                String Abfahrt = String.valueOf(listOfDepartures.getJSONObject(i).get("time"));
-                mArray.add(new Bahn(Linie, Ziel, Abfahrt));
+                String Zeit = String.valueOf(listOfDepartures.getJSONObject(i).get("time"));
+                //split departure time and delay
+                String ZeitUndVerspaetung [] = Zeit.split("\\+");
+                String Verkehrsmittel = String.valueOf(listOfDepartures.getJSONObject(i).get("transportation"));
+                //check if delay information is available
+                if(ZeitUndVerspaetung.length>1){
+                    mArray.add(new Bahn(Linie, Ziel, ZeitUndVerspaetung[0], ZeitUndVerspaetung[1], Verkehrsmittel));
+                }else{
+                    mArray.add(new Bahn(Linie, Ziel, ZeitUndVerspaetung[0], "0", Verkehrsmittel));
+                }
             }
 
             mAdapter.notifyDataSetChanged();

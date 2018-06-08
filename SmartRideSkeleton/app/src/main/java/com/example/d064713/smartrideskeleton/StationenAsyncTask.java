@@ -57,6 +57,7 @@ public class StationenAsyncTask extends AsyncTask<String, Integer, String> {
 
         } catch (JSONException e) {
             e.printStackTrace();
+            delegate.processFinish(new HashMap<String, String>(), new ArrayList<String>());
         }
     }
 

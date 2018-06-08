@@ -3,14 +3,20 @@ package com.example.d064713.smartrideskeleton;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.text.Editable;
+import android.text.Html;
+import android.text.SpannableString;
 import android.text.TextWatcher;
+import android.text.style.DynamicDrawableSpan;
+import android.text.style.ImageSpan;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
@@ -73,7 +79,6 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
         SharedPreferences prefs= getPreferences(MODE_PRIVATE);
         String HistorieString=prefs.getString("Suchhistorie", "");
         String[] HistorieArray = HistorieString.split(";");
-        System.out.println(HistorieString);
         Historie = new ArrayList<String>(Arrays.asList(HistorieArray));
         SuggestionsAdapter.addAll(Historie);
     }
@@ -117,6 +122,7 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
             @Override
             public void onFocusChange(View view, boolean hasFocus) {
                 if(hasFocus){
+                    Suchfeld.setText("");
                     Suchfeld.showDropDown();
                 }
             }
@@ -131,11 +137,11 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int beforeCharCount, int afterCharCount) {
                 //clear button only appears if there is at least one character in the search field
-                if(charSequence.length()>0){
+                if(charSequence.length()==1){
                     clearButton.setVisibility(View.VISIBLE);
                     SuggestionsAdapter.clear();
                     SuggestionsAdapter.addAll(Stationsnamen);
-                }else{
+                }else if(charSequence.length()==0){
                     clearButton.setVisibility(View.GONE);
                     SuggestionsAdapter.clear();
                     SuggestionsAdapter.addAll(Historie);
@@ -157,7 +163,45 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
         Historie = new ArrayList<String>();
         //initialize ArrayList holding departures
         Bahnen = new ArrayList<Bahn>();
-        BahnAdapter = new ArrayAdapter<Bahn>(this, android.R.layout.simple_list_item_1, Bahnen);
+        //custom array adapter to allow editing of text color for Ampelsystem
+        BahnAdapter = new ArrayAdapter<Bahn>(this, android.R.layout.simple_list_item_1, Bahnen){
+            @Override
+            public View getView(int position, View convertView, ViewGroup parent){
+                //the Bahn in a list element at given position
+                Bahn connection = getItem(position);
+
+                //the listview element
+                View view = super.getView(position, convertView, parent);
+                //the textview within the listview element
+                TextView tv = (TextView) view.findViewById(android.R.id.text1);
+
+                //Bahn-related data
+                String connectionInfo = connection.toString();
+                //Ampelsystem with unicode characters
+                connectionInfo = connectionInfo.replace("Auslastung: 0","<font color='#00cc00'>\u2b24</font>");
+                connectionInfo = connectionInfo.replace("Auslastung: 1","<font color='#ffcc00'>\u2b24</font>");
+                connectionInfo = connectionInfo.replace("Auslastung: 2","<font color='#ff3300'>\u2b24</font>");
+
+                tv.setText(Html.fromHtml(connectionInfo));
+                //accessing vehicle icons
+                ImageSpan tramIcon = new ImageSpan(getContext(), R.drawable.ic_tram_black_24dp);
+                ImageSpan busIcon = new ImageSpan(getContext(), R.drawable.ic_directions_bus_black_24dp);
+                //spannablestring to instert vehicle icons to list elements
+                SpannableString formattedText = new SpannableString(tv.getText());
+                //place icon in place of @ symbol
+                int start = connectionInfo.indexOf("@");
+                //choose the right icon
+                if(connection.Verkehrsmittel.equals("STRAB")){
+                    formattedText.setSpan(tramIcon, start, start+1, 0);
+                }else{
+                    formattedText.setSpan(busIcon, start, start+1, 0);
+                }
+                //display the formatted text in the list view
+                tv.setText(formattedText);
+
+                return view;
+            }
+        };
         Stationsliste = findViewById(R.id.stationList);
         Stationsliste.setAdapter(BahnAdapter);
         Stationsliste.setOnItemClickListener(this);
@@ -196,6 +240,8 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
     public void processFinish(HashMap<String, String> output, ArrayList<String> outputKeys){
         Stationen = output;
         Stationsnamen = outputKeys;
+        //loads connections for last station in the search history
+        getConnections(Historie.get(0));
     }
 
     //loads names of all connections departing from given station from RNV database
@@ -223,11 +269,10 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
             Bahnen.clear();
             BahnAdapter.notifyDataSetChanged();
         }
+        clearButton.setVisibility(View.VISIBLE);
+        Suchfeld.setText(station);
         Suchfeld.clearFocus();
         hideKeyboard();
-        for(int j = 0 ; j < Historie.size() ; j ++) {
-            System.out.println("historie" + Historie.get(j));
-        }
     }
 
     //add station name to search history upon successful retrieval from map
@@ -268,6 +313,11 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
         //keyboard shows up after focusing on search field
         InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.showSoftInput(Suchfeld, InputMethodManager.SHOW_IMPLICIT);
+    }
+
+    public void onSearch(View aView){
+        String station = Suchfeld.getText().toString();
+        getConnections(station);
     }
 
 }

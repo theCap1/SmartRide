@@ -12,13 +12,17 @@ public class Bahn {
     public String Linie;
     public String Ziel;
     public String Abfahrt;
+    public String Verspaetung;
+    public String Verkehrsmittel;
     public int Auslastung;
     public float[] Statistik;
 
-    public Bahn(String LinieValue, String ZielValue, String AbfahrtValue){
+    public Bahn(String LinieValue, String ZielValue, String AbfahrtValue, String VerspaetungValue, String VerkehrsmittelValue){
         Linie = LinieValue;
         Ziel = ZielValue;
         Abfahrt = AbfahrtValue;
+        Verspaetung = VerspaetungValue;
+        Verkehrsmittel = VerkehrsmittelValue;
         Auslastung = new Random().nextInt(3 - 0);
         Statistik = getAuslastung();
     }
@@ -30,7 +34,11 @@ public class Bahn {
     }
 
     public String toString(){
-        return Linie + " " + Ziel + " " + Abfahrt + " Auslastung: " + Auslastung;
+        if(Verspaetung.equals("0")){
+            return Linie + " @ " + Ziel + " Auslastung: " + Auslastung + " " + Abfahrt;
+        }else{
+            return Linie + " @ " + Ziel + " Auslastung: " + Auslastung + " " + Abfahrt + " +" + Verspaetung;
+        }
     }
 
 }
