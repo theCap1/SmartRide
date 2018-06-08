@@ -79,6 +79,7 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
         SharedPreferences prefs= getPreferences(MODE_PRIVATE);
         String HistorieString=prefs.getString("Suchhistorie", "");
         String[] HistorieArray = HistorieString.split(";");
+        System.out.println("historia erreay: " + Arrays.toString(HistorieArray));
         Historie = new ArrayList<String>(Arrays.asList(HistorieArray));
         SuggestionsAdapter.addAll(Historie);
     }
@@ -248,7 +249,6 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
     public void getConnections(String station){
         label.setVisibility(View.VISIBLE);
         label.setText("Nächste Verbindungen:");
-        Stationsliste.setVisibility(View.VISIBLE);
         MyAsyncTask cloud2 = new MyAsyncTask(Bahnen, BahnAdapter, Stationsliste);
         //all keys are lower case to enable case insensitivity in case of manual user input for station name
         //convert to lower case to match lower case keys
@@ -256,6 +256,7 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
         if(HaltestellenID != null) {
             //in case of valid station name: add station to search history
             addStationToHistorie(station);
+            Stationsliste.setVisibility(View.VISIBLE);
             String urlEncodedHaltestellenID = null;
             try {
                 urlEncodedHaltestellenID = URLEncoder.encode(HaltestellenID, "utf-8");
