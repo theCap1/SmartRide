@@ -2,6 +2,7 @@ package com.example.d064713.smartrideskeleton;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -33,6 +34,7 @@ import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Random;
 
 public class MainActivity extends Activity implements AdapterView.OnItemClickListener, StationenAsyncTask.AsyncResponse {
 
@@ -55,7 +57,6 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
     ArrayList<Bahn> Bahnen;
     ArrayAdapter<Bahn> BahnAdapter;
 
-    PopupWindow stats;
     LinearLayout layout;
 
     @Override
@@ -79,7 +80,7 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
         SharedPreferences prefs= getPreferences(MODE_PRIVATE);
         String HistorieString=prefs.getString("Suchhistorie", "");
         String[] HistorieArray = HistorieString.split(";");
-        System.out.println("historia erreay: " + Arrays.toString(HistorieArray));
+        //System.out.println("historia erreay: " + Arrays.toString(HistorieArray));
         Historie = new ArrayList<String>(Arrays.asList(HistorieArray));
         SuggestionsAdapter.addAll(Historie);
     }
@@ -207,12 +208,8 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
         Stationsliste.setAdapter(BahnAdapter);
         Stationsliste.setOnItemClickListener(this);
 
-        //Popup implementation
-        stats = new PopupWindow(this);
-
         layout = new LinearLayout(this);
         layout.setOrientation(LinearLayout.VERTICAL);
-        stats.setContentView(layout);
     }
 
     //list item listener
@@ -291,8 +288,27 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
     //popup window containing statistics
     //TODO: statistics popup implementation here
     public void getStatistics(){
-        stats.showAtLocation(layout, Gravity.CENTER, 10, 10);
-        stats.update(0, 0, 800, 300);
+        Intent intent = new Intent(  MainActivity.this, Stats.class );
+
+        //generate tourIDs to create Statistics
+        String tourId = null;
+        switch (new Random().nextInt(3)){
+            case 0:
+                tourId = "17942-10301-1";
+                break;
+            case 1:
+                tourId = "18653-10301-1";
+                break;
+            case 2:
+                tourId = "19137-10301-1";
+                break;
+            default:
+                tourId = "19374-33501-1";
+                break;
+        }
+        intent.putExtra("tourId", tourId); //handover tourIdx
+
+        startActivity( intent );
     }
 
     //hide keyboard

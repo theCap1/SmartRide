@@ -52,6 +52,7 @@ public class StationenAsyncTask extends AsyncTask<String, Integer, String> {
                 Stationsliste.put(Stationsname.toLowerCase(), StationsID);
                 Stationsnamen.add(Stationsname);
             }
+            //System.out.println("Stationsnamen are " + Stationsnamen);
             //execute callback function to pass hashmap and station names to MainActivity
             delegate.processFinish(Stationsliste, Stationsnamen);
 
