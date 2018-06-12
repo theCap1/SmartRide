@@ -48,14 +48,15 @@ public class MyAsyncTask extends AsyncTask<String, Integer, String> {
                 String Linie = String.valueOf(listOfDepartures.getJSONObject(i).get("lineLabel"));
                 String Ziel = String.valueOf(listOfDepartures.getJSONObject(i).get("direction"));
                 String Zeit = String.valueOf(listOfDepartures.getJSONObject(i).get("time"));
+                String tourId = String.valueOf( listOfDepartures.getJSONObject( i ).get( "tourId" ) );
                 //split departure time and delay
                 String ZeitUndVerspaetung [] = Zeit.split("\\+");
                 String Verkehrsmittel = String.valueOf(listOfDepartures.getJSONObject(i).get("transportation"));
                 //check if delay information is available
                 if(ZeitUndVerspaetung.length>1){
-                    mArray.add(new Bahn(Linie, Ziel, ZeitUndVerspaetung[0], ZeitUndVerspaetung[1], Verkehrsmittel));
+                    mArray.add(new Bahn(tourId, Linie, Ziel, ZeitUndVerspaetung[0], ZeitUndVerspaetung[1], Verkehrsmittel));
                 }else{
-                    mArray.add(new Bahn(Linie, Ziel, ZeitUndVerspaetung[0], "0", Verkehrsmittel));
+                    mArray.add(new Bahn(tourId, Linie, Ziel, ZeitUndVerspaetung[0], "0", Verkehrsmittel));
                 }
             }
 

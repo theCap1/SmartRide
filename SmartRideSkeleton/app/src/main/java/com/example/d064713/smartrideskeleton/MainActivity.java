@@ -221,7 +221,7 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
             getConnections(station);
         //upon choosing an element from departures list
         }else if(adapterView.getAdapter() == Stationsliste.getAdapter()){
-            getStatistics();
+            getStatistics(aPosition);
         }
     }
 
@@ -287,26 +287,13 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
 
     //popup window containing statistics
     //TODO: statistics popup implementation here
-    public void getStatistics(){
+    public void getStatistics(int aPosition){
         Intent intent = new Intent(  MainActivity.this, Stats.class );
 
         //generate tourIDs to create Statistics
-        String tourId = null;
-        switch (new Random().nextInt(3)){
-            case 0:
-                tourId = "17942-10301-1";
-                break;
-            case 1:
-                tourId = "18653-10301-1";
-                break;
-            case 2:
-                tourId = "19137-10301-1";
-                break;
-            default:
-                tourId = "19374-33501-1";
-                break;
-        }
-        intent.putExtra("tourId", tourId); //handover tourIdx
+        String tourId = Bahnen.get( aPosition ).tourId;;
+        System.out.println("TourId is = " + tourId);
+        intent.putExtra("tourId", tourId); //handover tourId
 
         startActivity( intent );
     }

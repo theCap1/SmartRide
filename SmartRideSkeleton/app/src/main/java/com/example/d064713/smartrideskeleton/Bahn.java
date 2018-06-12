@@ -1,5 +1,6 @@
 package com.example.d064713.smartrideskeleton;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Random;
 
@@ -14,17 +15,29 @@ public class Bahn {
     public String Abfahrt;
     public String Verspaetung;
     public String Verkehrsmittel;
+    public String tourId;
     public int Auslastung;
     public float[] Statistik;
 
-    public Bahn(String LinieValue, String ZielValue, String AbfahrtValue, String VerspaetungValue, String VerkehrsmittelValue){
+    public Bahn(String tourIdValue, String LinieValue, String ZielValue, String AbfahrtValue, String VerspaetungValue, String VerkehrsmittelValue){
         Linie = LinieValue;
         Ziel = ZielValue;
         Abfahrt = AbfahrtValue;
         Verspaetung = VerspaetungValue;
         Verkehrsmittel = VerkehrsmittelValue;
-        Auslastung = new Random().nextInt(3 - 0);
+        //Auslastung = new Random().nextInt(3 - 0);
+        tourId= tourIdValue;
         Statistik = getAuslastung();
+
+        Auslastung = getStatistics( tourIdValue )[getHour()];
+
+        if (Auslastung <= 3){
+            Auslastung = 0;
+        }else if (Auslastung <= 6){
+            Auslastung = 1;
+        }else{
+            Auslastung = 2;
+        }
     }
 
     //TODO: implementation
@@ -39,6 +52,35 @@ public class Bahn {
         }else{
             return Linie + " @ " + Ziel + " Auslastung: " + Auslastung + " " + Abfahrt + " +" + Verspaetung;
         }
+    }
+
+    //get an partly random Array with 24h statistics for a connection
+    public int[] getStatistics(String tourId){
+        String[] parts = tourId.split( "-" );
+        String[] chars = (tourId.replace("-", "")).split("(?!^)");
+        String id = parts[1] + parts[2] + chars[7] + chars [1] + chars[7] + parts [1] + chars[9] + chars[5] + chars[7] + chars[1] + chars[1] + chars[7] + parts[1];
+
+        System.out.println(id);
+
+        String[] idArray = id.split("(?!^)");
+        int[] values = new int[idArray.length];
+        for (int i = 0; i < idArray.length; i++) {
+            values[i] = Integer.parseInt(idArray[i]);
+        }
+        values[17] = values[17]-2;
+        values[18] = values[18]-1;
+
+        return values;
+    }
+
+    public int getHour(){
+        Calendar calendar = Calendar.getInstance();
+        String now = calendar.getTime().toString();
+        System.out.println( now );
+        String[] date = now.split( " " );
+        String time = date[3];
+        int hour = Integer.parseInt( time.split( ":" )[0] );
+        return hour;
     }
 
 }

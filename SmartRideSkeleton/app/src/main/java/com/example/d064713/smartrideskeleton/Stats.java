@@ -45,7 +45,6 @@ public class  Stats extends Activity {
         //get TourId from MainActivity and convert it to statistics
         Intent intent = getIntent();
         String tourId = intent.getStringExtra( "tourId" );
-        System.out.println(tourId);
         int[] values = getStatistics( tourId );
 
         //generate GraphData
@@ -97,7 +96,7 @@ public class  Stats extends Activity {
             stats.getViewport().setMaxX( hour + 10 );
         }
         else {
-            stats.getViewport().setMinX( 17 );
+            stats.getViewport().setMinX( 13 );
             stats.getViewport().setMaxX( 23 );
         }
         //make statistic scroll- and scalable
