@@ -72,15 +72,12 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
         e.commit();
     }
 
-    //TODO: remove empty elemet from front of the list
-
     @Override
     protected void onResume() {
         super.onResume();
         SharedPreferences prefs= getPreferences(MODE_PRIVATE);
-        String HistorieString=prefs.getString("Suchhistorie", "");
+        String HistorieString=prefs.getString("Suchhistorie", ";");
         String[] HistorieArray = HistorieString.split(";");
-        //System.out.println("historia erreay: " + Arrays.toString(HistorieArray));
         Historie = new ArrayList<String>(Arrays.asList(HistorieArray));
         SuggestionsAdapter.addAll(Historie);
     }
@@ -239,7 +236,9 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
         Stationen = output;
         Stationsnamen = outputKeys;
         //loads connections for last station in the search history
-        getConnections(Historie.get(0));
+        if(Historie.size()!=0){
+            getConnections(Historie.get(0));
+        }
     }
 
     //loads names of all connections departing from given station from RNV database

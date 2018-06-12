@@ -4,7 +4,7 @@ buildscript {
         google()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.1.0'
+        classpath 'com.android.tools.build:gradle:3.1.3'
     }
 }
 
@@ -57,7 +57,7 @@ task makeJar(type: Copy) {
 makeJar.dependsOn(clearJar, build)
 
 
-apply from: './maven_push.gradle'
+//apply from: './maven_push.gradle'
 
 repositories {
     google()

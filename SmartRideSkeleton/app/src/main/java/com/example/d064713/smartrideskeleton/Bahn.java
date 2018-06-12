@@ -28,7 +28,7 @@ public class Bahn {
         //Auslastung = new Random().nextInt(3 - 0);
         tourId= tourIdValue;
         Statistik = getAuslastung();
-
+        System.out.println("tourid: " + tourId);
         Auslastung = getStatistics( tourIdValue )[getHour()];
 
         if (Auslastung <= 3){
