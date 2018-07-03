@@ -56,6 +56,7 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
     //ArrayList containing departures data
     ArrayList<Bahn> Bahnen;
     ArrayAdapter<Bahn> BahnAdapter;
+    String stationName;
 
     LinearLayout layout;
 
@@ -80,6 +81,7 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
         String[] HistorieArray = HistorieString.split(";");
         Historie = new ArrayList<String>(Arrays.asList(HistorieArray));
         SuggestionsAdapter.addAll(Historie);
+        stationName = HistorieArray[0];
     }
 
     @Override
@@ -215,6 +217,7 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
         //upon choosing suggestion from popup (under search field)
         if(adapterView.getAdapter() == Suchfeld.getAdapter()){
             String station = SuggestionsAdapter.getItem(aPosition);
+            stationName = station;
             getConnections(station);
         //upon choosing an element from departures list
         }else if(adapterView.getAdapter() == Stationsliste.getAdapter()){
@@ -245,7 +248,7 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
     public void getConnections(String station){
         label.setVisibility(View.VISIBLE);
         label.setText("Nächste Verbindungen:");
-        MyAsyncTask cloud2 = new MyAsyncTask(Bahnen, BahnAdapter, Stationsliste);
+        MyAsyncTask cloud2 = new MyAsyncTask(Bahnen, BahnAdapter, Stationsliste, stationName);
         //all keys are lower case to enable case insensitivity in case of manual user input for station name
         //convert to lower case to match lower case keys
         String HaltestellenID = Stationen.get(station.toLowerCase());
@@ -293,8 +296,9 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
 
         //generate tourIDs to create Statistics
         String tourId = Bahnen.get( aPosition ).tourId;;
-        System.out.println("TourId is = " + tourId);
+        //System.out.println("TourId is = " + tourId);
         intent.putExtra("tourId", tourId); //handover tourId
+        intent.putExtra( "stationName", stationName );
 
         startActivity( intent );
     }

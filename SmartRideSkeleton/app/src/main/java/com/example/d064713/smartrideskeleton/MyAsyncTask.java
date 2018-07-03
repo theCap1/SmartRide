@@ -26,11 +26,13 @@ public class MyAsyncTask extends AsyncTask<String, Integer, String> {
     ArrayList<Bahn> mArray;
     ArrayAdapter<Bahn> mAdapter;
     ListView messageFeed;
+    String stationName;
 
-    public MyAsyncTask(ArrayList<Bahn> aArray, ArrayAdapter<Bahn> aAdapter, ListView aMessageFeed){
+    public MyAsyncTask(ArrayList<Bahn> aArray, ArrayAdapter<Bahn> aAdapter, ListView aMessageFeed, String station){
         mArray = aArray;
         mAdapter = aAdapter;
         messageFeed = aMessageFeed;
+        stationName = station;
     }
 
     //wird in Activity Thread ausgeführt
@@ -54,9 +56,9 @@ public class MyAsyncTask extends AsyncTask<String, Integer, String> {
                 String Verkehrsmittel = String.valueOf(listOfDepartures.getJSONObject(i).get("transportation"));
                 //check if delay information is available
                 if(ZeitUndVerspaetung.length>1){
-                    mArray.add(new Bahn(tourId, Linie, Ziel, ZeitUndVerspaetung[0], ZeitUndVerspaetung[1], Verkehrsmittel));
+                    mArray.add(new Bahn(tourId, Linie, Ziel, ZeitUndVerspaetung[0], ZeitUndVerspaetung[1], Verkehrsmittel, stationName));
                 }else{
-                    mArray.add(new Bahn(tourId, Linie, Ziel, ZeitUndVerspaetung[0], "0", Verkehrsmittel));
+                    mArray.add(new Bahn(tourId, Linie, Ziel, ZeitUndVerspaetung[0], "0", Verkehrsmittel, stationName));
                 }
             }
 
