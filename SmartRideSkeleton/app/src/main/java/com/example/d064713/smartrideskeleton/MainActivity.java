@@ -282,6 +282,8 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
         }
         //add to front of the list to display latest search first
         Historie.add(0, station);
+        SuggestionsAdapter.clear();
+        SuggestionsAdapter.addAll(Historie);
     }
 
     //popup window containing statistics
